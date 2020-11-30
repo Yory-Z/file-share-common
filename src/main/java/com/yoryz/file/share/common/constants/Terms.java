@@ -19,4 +19,8 @@ public class Terms {
     public static final String END_TIME = "endTime";
 
     public static final String TOKEN = "token";
+    public static final String DOWNLOAD_RANK = "downloadRank";
+    public static final String DOWNLOAD_RANK_MUTEX = "downloadRankMutex";
+    public static final String HOT_RANK = "hotRank";
+    public static final String HOT_RANK_MUTEX = "hotRankMutex";
 }
