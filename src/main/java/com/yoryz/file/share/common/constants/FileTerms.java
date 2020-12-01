@@ -29,4 +29,6 @@ public class FileTerms {
     public static final String FILE_ROOT_PATH = System.getProperty("user.dir") + "WEB-INF" + File.separator + "files" + File.separator;
 
     public static final String FILE_COLLECTION_ID = "fileCollectionId";
+    public static final String LATEST_COMMENT_TIME = "latestCommentTime";
+    public static final String CATALOG_MUTEX = "catalogMutex";
 }
