@@ -48,8 +48,8 @@ public class MapFactory {
         return new HashMap<>(capacity);
     }
 
-    public static Map<String, Object> getPagingMap3(int page, int limit){
-        Map<String, Object> paging = getObjectMap(3);
+    public static Map<String, Integer> getPagingMap3(int page, int limit){
+        Map<String, Integer> paging = getIntegerMap(3);
         fullPaging(paging, page, limit);
         return paging;
     }
