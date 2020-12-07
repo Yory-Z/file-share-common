@@ -7,8 +7,8 @@ package com.yoryz.file.share.common.exception;
  * @version 1.0
  * @date 2020/2/2 21:31
  */
-public class UpdateDatebaseDateFailedException extends Exception {
-    public UpdateDatebaseDateFailedException(String msg) {
+public class UpdateDatabaseDateFailedException extends Exception {
+    public UpdateDatabaseDateFailedException(String msg) {
         super(msg);
     }
 }
