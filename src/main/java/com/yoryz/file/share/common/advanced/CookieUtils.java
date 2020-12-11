@@ -1,5 +1,9 @@
 package com.yoryz.file.share.common.advanced;
 
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +19,9 @@ import java.net.URLEncoder;
  * @date 2019/12/24 17:08
  */
 public class CookieUtils {
+
+    private static final Logger logger = LoggerFactory.getLogger(CookieUtils.class);
+
     /**
      * 得到Cookie的值, 不编码
      *
@@ -196,23 +203,26 @@ public class CookieUtils {
      * 得到cookie的域名
      */
     private static final String getDomainName(HttpServletRequest request) {
-        String domainName = null;
-
-        String serverName = request.getRequestURL().toString();
-        if (serverName == null || serverName.equals("")) {
-            domainName = "";
-        } else {
-            serverName = serverName.toLowerCase();
-            serverName = serverName.substring(7);
-            final int end = serverName.indexOf("/");
-            serverName = serverName.substring(0, end);
-            domainName = serverName;
+        String requestUrl = request.getRequestURL().toString();
+        if (StringUtils.isBlank(requestUrl)) {
+            return "";
         }
 
-        if (domainName.indexOf(":") > 0) {
-            String[] ary = domainName.split("\\:");
-            domainName = ary[0];
+        requestUrl = requestUrl.toLowerCase();
+        int doubleSlashIdx = requestUrl.indexOf("://");
+        if (doubleSlashIdx != -1) {
+            requestUrl = requestUrl.substring(doubleSlashIdx + 3);
         }
-        return domainName;
+
+        int subTailIdx = requestUrl.indexOf("/");
+        if (subTailIdx != -1) {
+            requestUrl = requestUrl.substring(0, subTailIdx);
+        }
+
+        int colonIdx = requestUrl.indexOf(":");
+        if (colonIdx != -1) {
+            requestUrl = requestUrl.substring(0, colonIdx);
+        }
+        return requestUrl;
     }
 }
